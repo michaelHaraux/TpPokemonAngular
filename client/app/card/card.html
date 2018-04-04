@@ -1,0 +1,19 @@
+<div>This is the card view.</div>
+
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Type</th>
+      <th scope="col">Image</th>
+    </thead>
+<tr ng-repeat="Card in cardCtrl.test">
+  <td ng-bind="Card.nationalPokedexNumber"></td>
+  <td ng-bind="Card.name"></td>
+  <td ng-bind="Card.types"></td>
+  <td><img ng-src="{{Card.imageUrl}}"></td>
+</tr>
+  </table>
+</div>

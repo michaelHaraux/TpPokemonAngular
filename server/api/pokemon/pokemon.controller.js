@@ -12,6 +12,8 @@
 
 import jsonpatch from 'fast-json-patch';
 import Pokemon from './pokemon.model';
+const pokemon = require('pokemontcgsdk');
+
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -66,9 +68,11 @@ function handleError(res, statusCode) {
 
 // Gets a list of Pokemons
 export function index(req, res) {
-  return Pokemon.find().exec()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+  return pokemon.card.where({ supertype: 'pokemon'})
+.then(cards => {
+    console.log(cards); // "M Sceptile-EX"
+    res.json(cards);
+})
 }
 
 // Gets a single Pokemon from the DB
